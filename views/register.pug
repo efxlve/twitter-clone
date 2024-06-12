@@ -1,0 +1,40 @@
+extends layouts/register-layout.pug
+
+block content
+    .loginContainer 
+        img(src="https://abs.twimg.com/icons/apple-touch-icon-192x192.png", alt="Twitter Logo")
+        h1 Create your account
+        form#registerForm(method="post", onsubmit="event.preventDefault(); validateForm();") 
+            input(type="text", name="firstName", placeholder="First name", value=firstName required="")
+            input(type="text", name="lastName", placeholder="Last name", value=lastName required="")
+            input(type="text", name="username", placeholder="Username", value=username required="")
+            input(type="email", name="email", placeholder="Email", value=email required="")
+            input#password(type="password", name="password", placeholder="Password", required="")
+            input#passwordConfirm(type="password", name="passwordConfirm", placeholder="Confirm Password", required="")
+            input(type="submit", value="Sign up")
+            p Already have an account? 
+                a(href="/login") Sign in
+            p#errorMessage.errorMessage #{errorMessage}
+
+        script.
+            var passwordField = document.getElementById("password");
+            var passwordConfirmField = document.getElementById("passwordConfirm");
+            var form = document.getElementById("registerForm");
+
+            function validateForm() {
+                if (passwordField.value != passwordConfirmField.value) {
+                    passwordConfirmField.style.borderColor = "red";
+                    var warningMessage = document.createElement("p");
+                    warningMessage.textContent = "Passwords do not match. Please try again!";
+                    warningMessage.style.color = "red";
+                    passwordConfirmField.parentNode.appendChild(warningMessage);
+                }
+                else {
+                    passwordConfirmField.style.borderColor = "";
+                    var existingWarningMessage = passwordConfirmField.parentNode.querySelector("p");
+                    if (existingWarningMessage) {
+                        existingWarningMessage.remove();
+                    }
+                    form.submit();
+                }
+            }
