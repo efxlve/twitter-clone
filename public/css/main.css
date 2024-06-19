@@ -6,6 +6,8 @@
     --spacing: 15px;
     --greyText: rgb(101, 119, 134);
     --greyButtonText: rgba(0,0,0,0.34);
+    --red: rgb(226, 34, 94);
+    --buttonHoverBgRed: #fad3d3;
 }
 
 * {
@@ -35,6 +37,7 @@ nav {
 }
 
 nav a {
+    transition: background-color 0.3s ease, color 0.3s ease, border-radius 0.3s ease;
     padding: 10px;
     font-size: 30px;
     width: 55px;
@@ -59,6 +62,11 @@ button {
     background-color: transparent;
     border: none;
     color: var(--greyButtonText);
+}
+
+button i,
+button span {
+    pointer-events: none;
 }
 
 .mainSectionContainer {
@@ -198,4 +206,16 @@ button {
     font-size: 16px;
     color: #657786;
     margin-top: 10px;
+}
+
+.postButtonContainer.red button.active {
+    transition: background-color 0.3s ease, color 0.3s ease, border-radius 0.3s ease;
+    color: var(--red);
+}
+
+
+.postButtonContainer.red button.active:hover {
+    background-color: var(--buttonHoverBgRed);
+    color: var(--red);
+    border-radius: 50%;
 }
