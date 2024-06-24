@@ -277,6 +277,10 @@ button span {
     border-radius: 50%;
 }
 
+.postButtonContainer button {
+    transition: background-color 0.3s ease, color 0.3s ease, border-radius 0.3s ease;
+}
+
 .postActionContainer {
     padding-left: 35px;
     font-size: 13px;
@@ -290,4 +294,9 @@ button span {
 
 .replyFlag a {
     color: var(--blue);
+}
+
+.post.largeFont .postBody,
+.post.largeFont .postFooter {
+    font-size: 23px;
 }

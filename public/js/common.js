@@ -45,34 +45,13 @@ $("#submitPostButton, #submitReplyButton").click((event) => {
     })
 })
 
-$(document).on("click", ".likeButton", (event) => {
-    var button = $(event.target);
-    var postId = getPostIdFromElement(button);
-    
-    if(postId === undefined) return;
-
-    $.ajax({
-        url: `/api/posts/${postId}/like`,
-        type: "PUT",
-        success: (postData) => {
-            button.find("span").text(postData.likes.length || "");
-            if(postData.likes.includes(userLoggedIn._id)) {
-                button.addClass("active");
-            }
-            else {
-                button.removeClass("active");
-            }
-        }
-    })
-})
-
 $("#replyModal").on("show.bs.modal", (event) => {
     var button = $(event.relatedTarget);
     var postId = getPostIdFromElement(button);
     $("#submitReplyButton").data("id", postId);
 
     $.get("/api/posts/" + postId, results => {
-        outputPosts(results, $("#originalPostContainer"))
+        outputPosts(results.postData, $("#originalPostContainer"))
     })
 })
 
@@ -99,6 +78,36 @@ $(document).on("click", ".retweetButton", (event) => {
     })
 })
 
+$(document).on("click", ".post", (event) => {
+    var element = $(event.target);
+    var postId = getPostIdFromElement(element);
+
+    if (postId !== undefined && !element.is("button")) {
+        window.location.href = '/posts/' + postId;
+    }
+})
+
+$(document).on("click", ".likeButton", (event) => {
+    var button = $(event.target);
+    var postId = getPostIdFromElement(button);
+    
+    if(postId === undefined) return;
+
+    $.ajax({
+        url: `/api/posts/${postId}/like`,
+        type: "PUT",
+        success: (postData) => {
+            button.find("span").text(postData.likes.length || "");
+            if(postData.likes.includes(userLoggedIn._id)) {
+                button.addClass("active");
+            }
+            else {
+                button.removeClass("active");
+            }
+        }
+    })
+})
+
 function getPostIdFromElement(element) {
     var isRoot = element.hasClass("post");
     var rootElement = isRoot ? element : element.closest(".post");
@@ -109,7 +118,7 @@ function getPostIdFromElement(element) {
     return postId;
 }
 
-function createPostHtml(postData) {
+function createPostHtml(postData, largeFont = false) {
     if(postData == null) return alert("Post object is null!");
 
     var isRetweet = postData.retweetData !== undefined;
@@ -128,6 +137,7 @@ function createPostHtml(postData) {
     
     var likeButtonActiveClass = postData.likes.includes(userLoggedIn._id) ? "active" : "";
     var retweetButtonActiveClass = postData.retweetUsers.includes(userLoggedIn._id) ? "active" : "";
+    var largeFontClass = largeFont ? "largeFont" : "";
 
     var retweetText = '';
     if(isRetweet) {
@@ -135,7 +145,7 @@ function createPostHtml(postData) {
     }
 
     var replyFlag = "";
-    if (postData.replyTo) {
+    if (postData.replyTo && postData.replyTo._id) {
         if (!postData.replyTo._id) {
             return alert("Reply to is not populated.");
         }
@@ -149,7 +159,7 @@ function createPostHtml(postData) {
         </div>`;
     }
 
-    return `<div class='post' data-id='${postData._id}'>
+    return `<div class='post ${largeFontClass}' data-id='${postData._id}'>
                 <div class='postActionContainer'>
                     ${retweetText}
                 </div>
@@ -168,7 +178,7 @@ function createPostHtml(postData) {
                             <span>${postData.content}</span>
                         </div>
                         <div class='postFooter'>
-                            <div class='postButtonContainer'>
+                            <div class='postButtonContainer blue'>
                             <button data-toggle='modal' data-target='#replyModal'>
                                 <i class='far fa-comment'></i>
                             </button>
@@ -246,4 +256,21 @@ function outputPosts(results, container) {
             <div class='noResults'>Come on, write your first tweet now!</div>
         `)
     }
+}
+
+function outputPostsWithReplies(results, container) {
+    container.html("");
+
+    if(results.replyTo !== undefined && results.replyTo._id !== undefined) {
+        var html = createPostHtml(results.replyTo);
+        container.append(html);
+    }
+
+    var mainPostHtml = createPostHtml(results.postData, true);
+    container.append(mainPostHtml);
+
+    results.replies.forEach(result => {
+        var html = createPostHtml(result)
+        container.append(html);
+    });
 }
