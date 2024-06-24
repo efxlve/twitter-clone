@@ -300,3 +300,83 @@ button span {
 .post.largeFont .postFooter {
     font-size: 23px;
 }
+
+.postContentContainer .header {
+    display: flex;
+}
+
+.postContentContainer .header button {
+    transition: background-color 0.3s ease, color 0.3s ease, border-radius 0.3s ease;
+}
+
+.postContentContainer .header button:hover {
+    background-color: #d4edff;
+    color: var(--blue);
+    border-radius: 50%;
+}
+
+.postContentContainer .header .date {
+    flex: 1;
+}
+
+#deletePostModal .modal-content {
+    border-radius: 8px; 
+    border: 1px solid #e1e8ed;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+#deletePostModal .modal-header {
+    border-bottom: none;
+    padding: 15px 20px;
+}
+
+#deletePostModal .modal-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #14171a;
+}
+
+#deletePostModal .modal-body {
+    padding: 15px 20px;
+    color: #333;
+    font-size: 15px;
+}
+
+#deletePostModal .modal-footer {
+    border-top: none;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#deletePostButton {
+    background-color: #e0245e;
+    border-color: #e0245e;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-right: 8px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+#deletePostButton:hover {
+    background-color: #c21d50;
+    border-color: #c21d50;
+}
+
+#btn {
+    background-color: #f5f8fa;
+    border-color: #e1e8ed;
+    color: #657786;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+#btn:hover {
+    background-color: #e1e8ed;
+    border-color: #d1d8de;
+}

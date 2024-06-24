@@ -24,3 +24,21 @@ mixin createReplyModal(userLoggedIn)
                             textarea#replyTextarea(placeholder="Tweet your reply")
                 .modal-footer
                     button#submitReplyButton.btn.btn-primary(type='button', disabled="") Reply
+
+mixin createDeletePostModal()
+    #deletePostModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='deletePostModalLabel', aria-hidden='true')
+        .modal-dialog(role='document')
+            .modal-content
+                .modal-header
+                    h5#deletePostLabel.modal-title Delete tweet?
+                .modal-body
+                    p This can’t be undone and it will be removed from your profile, the timeline of any accounts that follow you, and from search results.
+                .modal-footer
+                    button#deletePostButton.btn.btn-danger(type='button') Delete
+                    button#btn.btn-light(type='button', data-dismiss='modal') Cancel
+
+                    
+
+mixin createPostModals(userLoggedIn)
+    +createReplyModal(userLoggedIn)
+    +createDeletePostModal()
