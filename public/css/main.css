@@ -215,6 +215,10 @@ button span {
     font-weight: bold;
 }
 
+.displayNameFollow {
+    font-weight: bold;
+}
+
 .postFooter {
     display: flex;
     align-items: center;
@@ -521,4 +525,20 @@ button span {
 .tab:hover {
     color: var(--greyText);
     background-color: rgba(0,0,0,0.12);
+}
+
+.resultsContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.resultsContainer .user {
+    padding: var(--spacing);
+    display: flex;
+    border-bottom: 1px solid var(--lightGrey);
+}
+
+.user .userDetailsContainer {
+    flex: 1;
+    padding: 0 var(--spacing);
 }

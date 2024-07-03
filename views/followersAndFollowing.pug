@@ -1,0 +1,24 @@
+extends layouts/main-layout.pug
+
+block content
+    if !profileUser
+        .profileHeaderContainer 
+            .coverPhotoContainer
+                .userImageContainer 
+                    img(src="/images/profilePicture.png", alt="User profile image")
+        div.errorMessage
+            h2 This account doesn’t exist
+            p Try searching for another.
+    else
+        script.
+            var profileUserId = `!{profileUser._id}`;
+            var selectedTab = `!{selectedTab}`;
+
+        .tabsContainer
+            +createTab("Following", `/profile/${profileUser.username}/following`, selectedTab != "followers")
+            +createTab("Followers", `/profile/${profileUser.username}/followers`, selectedTab == "followers")
+
+        .resultsContainer
+
+block scripts
+    script(src="/js/followersAndFollowing.js")
