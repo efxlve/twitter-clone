@@ -360,13 +360,15 @@ button span {
 }
 
 #deletePostButton {
+    border: 1px solid black;
+    color: white;
     background-color: #e0245e;
     border-color: #e0245e;
-    color: white;
-    padding: 8px 16px;
-    border-radius: 4px;
-    font-size: 14px;
-    margin-right: 8px;
+    font-weight: bold;
+    padding: 5px 15px;
+    border-radius: 60px;
+    display: inline-block;
+    margin-left: var(--spacing);
     transition: background-color 0.3s, border-color 0.3s;
 }
 
@@ -407,6 +409,10 @@ button span {
     margin-left: var(--spacing);
     position: absolute;
     bottom: -66px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .profileHeaderContainer .userImageContainer img {
@@ -541,4 +547,84 @@ button span {
 .user .userDetailsContainer {
     flex: 1;
     padding: 0 var(--spacing);
+}
+
+.profilePictureButton {
+    position: absolute;
+    font-size: 50px;
+    color: rgba(0, 0, 0, 0.6);
+    display: none;
+}
+
+.userImageContainer:hover .profilePictureButton {
+    display: block;
+}
+
+#imageUploadModal .modal-content {
+    border-radius: 8px; 
+    border: 1px solid #e1e8ed;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+#imageUploadModal .modal-header {
+    border-bottom: none;
+    padding: 15px 20px;
+}
+
+#imageUploadModal .modal-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #14171a;
+}
+
+#imageUploadModal .modal-body {
+    padding: 15px 20px;
+    color: #333;
+    font-size: 15px;
+}
+
+#imageUploadModal .modal-footer {
+    border-top: none;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#imageUploadButton {
+    border: 1px solid black;
+    color: white;
+    background-color: black;
+    font-weight: bold;
+    padding: 5px 15px;
+    border-radius: 60px;
+    display: inline-block;
+    margin-left: var(--spacing);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+#imageUploadButton:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+}
+
+#btn.btn-light {
+    border: 1px solid var(--greyButtonText);
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    padding: 5px 15px;
+    border-radius: 60px;
+    display: inline-block;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+#btn.btn-light:hover {
+    background-color: rgba(0,0,0,0.12);
+}
+
+#imagePreview {
+    display: block;
+    width: 100%;
+    max-width: 100%;
 }
