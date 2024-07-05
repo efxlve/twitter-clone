@@ -37,11 +37,11 @@ mixin createDeletePostModal()
                     button#deletePostButton.btn.btn-danger(type='button') Delete
                     button#btn.btn-light(type='button', data-dismiss='modal') Cancel
 
-                    
-
 mixin createPostModals(userLoggedIn)
     +createReplyModal(userLoggedIn)
     +createDeletePostModal()
+    +createPinnedPostModal()
+    +createUnpinPostModal()
 
 mixin createFollowButton(user, isFollowing)
     - text = isFollowing ? "Following" : "Follow"
@@ -81,4 +81,28 @@ mixin createCoverPhotoUploadModal()
                         img#coverPreview
                 .modal-footer
                     button#coverPhotoUploadButton.btn(type='button') Save
+                    button#btn.btn-light(type='button', data-dismiss='modal') Cancel
+
+mixin createPinnedPostModal()
+    #confirmPinModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='confirmPinModalLabel', aria-hidden='true')
+        .modal-dialog(role='document')
+            .modal-content
+                .modal-header
+                    h5#confirmPinModalLabel.modal-title Pin this tweet?
+                .modal-body
+                    p This tweet will appear at the top of your profile. You can only pin one tweet.
+                .modal-footer
+                    button#pinPostButton.btn(type='button') Pin
+                    button#btn.btn-light(type='button', data-dismiss='modal') Cancel
+
+mixin createUnpinPostModal()
+    #unpinModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='unpinModalLabel', aria-hidden='true')
+        .modal-dialog(role='document')
+            .modal-content
+                .modal-header
+                    h5#unpinModalLabel.modal-title Unpin the tweet?
+                .modal-body
+                    p This tweet will be unpinned.
+                .modal-footer
+                    button#unpinPostButton.btn(type='button') Unpin
                     button#btn.btn-light(type='button', data-dismiss='modal') Cancel

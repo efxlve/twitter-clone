@@ -690,6 +690,115 @@ button span {
     max-width: 100%;
 }
 
+#confirmPinModal .modal-content {
+    border-radius: 8px; 
+    border: 1px solid #e1e8ed;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+#confirmPinModal .modal-header {
+    border-bottom: none;
+    padding: 15px 20px;
+}
+
+#confirmPinModal .modal-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #14171a;
+}
+
+#confirmPinModal .modal-body {
+    padding: 15px 20px;
+    color: #333;
+    font-size: 15px;
+}
+
+#confirmPinModal .modal-footer {
+    border-top: none;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#pinPostButton {
+    border: 1px solid black;
+    color: white;
+    background-color: black;
+    font-weight: bold;
+    padding: 5px 15px;
+    border-radius: 60px;
+    display: inline-block;
+    margin-left: var(--spacing);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+#pinPostButton:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+}
+
+.pinButton.active {
+    color: var(--blue);
+}
+
+.pinnedPostText {
+    font-size: 12px;
+    color: var(--greyText);
+}
+
+.pinnedPostContainer {
+    border-bottom: 10px solid rgb(230, 236, 240);
+}
+
+#unpinModal .modal-content {
+    border-radius: 8px; 
+    border: 1px solid #e1e8ed;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+#unpinModal .modal-header {
+    border-bottom: none;
+    padding: 15px 20px;
+}
+
+#unpinModal .modal-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #14171a;
+}
+
+#unpinModal .modal-body {
+    padding: 15px 20px;
+    color: #333;
+    font-size: 15px;
+}
+
+#unpinModal .modal-footer {
+    border-top: none;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#unpinPostButton {
+    border: 1px solid black;
+    color: white;
+    background-color: black;
+    font-weight: bold;
+    padding: 5px 15px;
+    border-radius: 60px;
+    display: inline-block;
+    margin-left: var(--spacing);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+#unpinPostButton:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+}
+
 
 
 
