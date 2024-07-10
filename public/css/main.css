@@ -397,6 +397,10 @@ button span {
     padding-top: 90px;
 }
 
+.errorMessageChat {
+    padding: var(--spacing);
+}
+
 .coverPhotoSection {
     height: 180px;
     background-color: var(--blue);
