@@ -1,5 +1,7 @@
 // Globals
 var cropper;
+var timer;
+var selectedUsers = [];
 
 $("#postTextarea, #replyTextarea").keyup(event => {
     var textbox = $(event.target);
@@ -200,6 +202,35 @@ $("#coverPhotoUploadButton").click(() => {
     })
 })
 
+$("#userSearchTextbox").keydown((event) => {
+    clearTimeout(timer);
+    var textbox = $(event.target);
+    var value = textbox.val();
+
+    if(value == "" && (event.which == 8 || event.keyCode == 8)) {
+        selectedUsers.pop();
+        updateSelectedUsersHtml();
+        $(".resultsContainer").html("");
+
+        if(selectedUsers.length == 0) {
+            $("#createChatButton").prop("disabled", true);
+        }
+
+        return;
+    }
+
+    timer = setTimeout(() => {
+        value = textbox.val().trim();
+
+        if(value == "") {
+            $(".resultsContainer").html("");
+        }
+        else {
+            searchUsers(value);
+        }
+    }, 1000);
+});
+
 $(document).on("click", ".retweetButton", (event) => {
     var button = $(event.target);
     var postId = getPostIdFromElement(button);
@@ -339,14 +370,15 @@ function createPostHtml(postData, largeFont = false) {
     var buttons = "";
     var pinnedPostText = "";
 
+    if(postData.pinned === true) {
+        pinnedClass = "active";
+        dataTarget = "#unpinModal";
+        pinnedPostText = "<i class='fas fa-thumbtack'></i> <span>Pinned</span>"
+    }
+
     if (postData.postedBy._id == userLoggedIn._id) {
         var pinnedClass = "";
         var dataTarget = "#confirmPinModal";
-        if(postData.pinned === true) {
-            pinnedClass = "active";
-            dataTarget = "#unpinModal";
-            pinnedPostText = "<i class='fas fa-thumbtack'></i> <span>Pinned</span>"
-        }
 
         buttons = ` <button class='pinButton ${pinnedClass}' data-id="${postData._id}" data-toggle="modal" data-target="${dataTarget}"><i class='fas fa-thumbtack'></i></button>
                     <button data-id="${postData._id}" data-toggle="modal" data-target="#deletePostModal"><i class='fas fa-times'></i></button>`;
@@ -508,4 +540,50 @@ function createUserHtml(userData, showFollowButton) {
                 </div>
             ${followButton}
             </div>`;
+}
+
+function searchUsers(searchTerm) {
+    $.get("/api/users", { search: searchTerm }, results => {
+        outputSelectableUsers(results, $(".resultsContainer"));
+    })
+}
+
+function outputSelectableUsers(results, container) {
+    container.html("");
+
+    results.forEach(result => {
+        if(result._id == userLoggedIn._id || selectedUsers.some(u => u._id == result._id)) {
+            return;
+        }
+
+        var html = createUserHtml(result, false);
+        var element = $(html);
+        element.click(() => userSelected(result));
+        container.append(element);
+    });
+
+    if (results.length == 0) {
+        container.append("<span class='noResults'>No results found.</span>");
+    }
+}
+
+function userSelected(user) {
+    selectedUsers.push(user);
+    updateSelectedUsersHtml();
+    $("#userSearchTextbox").val("").focus();
+    $(".resultsContainer").html("");
+    $("#createChatButton").prop("disabled", false);
+}
+
+function updateSelectedUsersHtml() {
+    var elements = [];
+
+    selectedUsers.forEach(user => {
+        var name = user.firstName + " " + user.lastName;
+        var userElement = $ (`<span class='selectedUser'>${name}</span>`);
+        elements.push(userElement);
+    })
+
+    $(".selectedUser").remove();
+    $("#selectedUsers").prepend(elements);
 }

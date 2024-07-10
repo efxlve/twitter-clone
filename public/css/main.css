@@ -747,10 +747,6 @@ button span {
     color: var(--greyText);
 }
 
-.pinnedPostContainer {
-    border-bottom: 10px solid rgb(230, 236, 240);
-}
-
 #unpinModal .modal-content {
     border-radius: 8px; 
     border: 1px solid #e1e8ed;
@@ -821,6 +817,65 @@ button span {
     color: var(--greyText);
 }
 
+#inboxPageButton {
+    transition: color 0.3s ease;
+}
+
+#inboxPageButton:hover {
+    color: var(--blue);
+}
+
+.chatPageContainer {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.chatTitleBar {
+    border-bottom: 1px solid var(--lightGrey);
+    display: flex;
+    align-items: center;
+    min-height: 60px;
+    padding: 10px;
+}
+
+.chatTitleBar label {
+    margin: 0 10px 0 0;
+}
+
+#userSearchTextbox {
+    border: none;
+    flex: 1;
+    font-weight: 200;
+    min-width: 350px;
+}
+
+#createChatButton {
+    border: none;
+    background-color: var(--blue);
+    color: #fff;
+    padding: 7px 20px;
+    margin: 10px auto;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#createChatButton:disabled {
+    background-color: var(--lightGrey);
+    color: var(--greyText);
+    cursor: context-menu;
+}
+
+.selectedUser {
+    font-weight: 300;
+    background-color: #CBE5FE;
+    color: #0084ff;
+    padding: 5px;
+    border-radius: 3px;
+    margin: 5px 5px 0 0;
+    display: inline-block;
+}
 
 
 
