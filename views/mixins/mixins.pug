@@ -106,3 +106,37 @@ mixin createUnpinPostModal()
                 .modal-footer
                     button#unpinPostButton.btn(type='button') Unpin
                     button#btn.btn-light(type='button', data-dismiss='modal') Cancel
+
+mixin createChatImage(chatData, userLoggedIn)
+    if(!chatData)
+        return 
+
+    - var i = 0
+    - var maxImagesToShow = 3
+    - var remainingUsers = chatData.users.length - maxImagesToShow
+    - remainingUsers--
+    
+    .chatImagesContainer 
+        if remainingUsers > 0
+            .userCount 
+                span +#{remainingUsers}
+
+        each user in chatData.users
+            if chatData.users.length != 1 && user._id == userLoggedIn._id
+                - continue
+            else if i >= maxImagesToShow 
+                - break
+            img(src=user.profilePicture, alt="User's profile picture", title=user.firstName)
+            - i++
+
+mixin createchatNameModal(chat)
+    #chatNameModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='chatNameModalLabel', aria-hidden='true')
+        .modal-dialog(role='document')
+            .modal-content
+                .modal-header
+                    h5#chatNameModalLabel.modal-title Change the chat name
+                .modal-body
+                    input#chatNameTextbox(type="text", placeholder="Enter a name for this chat", value=chat.chatName)
+                .modal-footer
+                    button#chatNameButton.btn(type='button') Save
+                    button#btn.btn-light(type='button', data-dismiss='modal') Cancel

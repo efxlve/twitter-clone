@@ -6,11 +6,19 @@
     --lightGrey: rgb(230, 236, 240);
     --spacing: 15px;
     --greyText: rgb(101, 119, 134);
-    --greyButtonText: rgba(0,0,0,0.34);
+    --greyButtonText: rgba(0, 0, 0, 0.34);
     --red: rgb(226, 34, 94);
     --redBackground: rgba(226, 34, 94, 0.1);
     --green: rgb(23, 191, 99);
     --greenBackground: rgba(23, 191, 99, 0.1);
+}
+
+html,
+body {
+    height: 100%;
+    min-height: 100%;
+    background-color: #fff;
+    font-weight: 300;
 }
 
 * {
@@ -56,13 +64,20 @@ nav a.blue {
 }
 
 nav a:hover {
-    background-color: rgba(0,0,0,0.12);
+    background-color: rgba(0, 0, 0, 0.12);
     color: var(--blue);
     border-radius: 50%;
 }
 
-.wrapper > .row {
+.wrapper>.row {
     margin: 0;
+    height: 100%;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 button {
@@ -77,7 +92,7 @@ button span {
 }
 
 .mainSectionContainer {
-    padding:  0;
+    padding: 0;
     border-left: 1px solid var(--lightGrey);
     border-right: 1px solid var(--lightGrey);
     display: flex;
@@ -104,7 +119,7 @@ button span {
     flex-shrink: 0;
 }
 
-.modal-content{
+.modal-content {
     border-radius: 15px;
 }
 
@@ -138,8 +153,8 @@ button span {
     font-size: 0.875rem;
     font-weight: 700;
     text-transform: none;
-    padding: 0.375rem 1.2rem; 
-    border-radius: 1.4rem; 
+    padding: 0.375rem 1.2rem;
+    border-radius: 1.4rem;
 }
 
 #submitReplyButton.btn-primary:disabled {
@@ -329,10 +344,10 @@ button span {
 }
 
 #deletePostModal .modal-content {
-    border-radius: 8px; 
+    border-radius: 8px;
     border: 1px solid #e1e8ed;
     background-color: white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 #deletePostModal .modal-header {
@@ -441,7 +456,7 @@ button span {
 }
 
 .profileButton:hover {
-    background-color: rgba(0,0,0,0.12);
+    background-color: rgba(0, 0, 0, 0.12);
 }
 
 .followButton {
@@ -474,7 +489,7 @@ button span {
 }
 
 .followButton.following:hover {
-    background-color: rgba(0,0,0,0.12);
+    background-color: rgba(0, 0, 0, 0.12);
 }
 
 .profileHeaderContainer .userDetailsContainer {
@@ -534,7 +549,7 @@ button span {
 
 .tab:hover {
     color: var(--greyText);
-    background-color: rgba(0,0,0,0.12);
+    background-color: rgba(0, 0, 0, 0.12);
 }
 
 .resultsContainer {
@@ -553,14 +568,16 @@ button span {
     padding: 0 var(--spacing);
 }
 
-.profilePictureButton, .coverPhotoButton {
+.profilePictureButton,
+.coverPhotoButton {
     position: absolute;
     font-size: 50px;
     color: rgba(0, 0, 0, 0.6);
     display: none;
 }
 
-.userImageContainer:hover .profilePictureButton, .coverPhotoSection:hover .coverPhotoButton {
+.userImageContainer:hover .profilePictureButton,
+.coverPhotoSection:hover .coverPhotoButton {
     display: block;
 }
 
@@ -578,10 +595,10 @@ button span {
 }
 
 #imageUploadModal .modal-content {
-    border-radius: 8px; 
+    border-radius: 8px;
     border: 1px solid #e1e8ed;
     background-color: white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 #imageUploadModal .modal-header {
@@ -637,14 +654,14 @@ button span {
 }
 
 #btn.btn-light:hover {
-    background-color: rgba(0,0,0,0.12);
+    background-color: rgba(0, 0, 0, 0.12);
 }
 
 #coverPhotoUploadModal .modal-content {
-    border-radius: 8px; 
+    border-radius: 8px;
     border: 1px solid #e1e8ed;
     background-color: white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 #coverPhotoUploadModal .modal-header {
@@ -688,17 +705,18 @@ button span {
     border: 1px solid rgba(0, 0, 0, 0.8);
 }
 
-#imagePreview, #coverPreview {
+#imagePreview,
+#coverPreview {
     display: block;
     width: 100%;
     max-width: 100%;
 }
 
 #confirmPinModal .modal-content {
-    border-radius: 8px; 
+    border-radius: 8px;
     border: 1px solid #e1e8ed;
     background-color: white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 #confirmPinModal .modal-header {
@@ -752,10 +770,10 @@ button span {
 }
 
 #unpinModal .modal-content {
-    border-radius: 8px; 
+    border-radius: 8px;
     border: 1px solid #e1e8ed;
     background-color: white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 #unpinModal .modal-header {
@@ -799,6 +817,64 @@ button span {
     border: 1px solid rgba(0, 0, 0, 0.8);
 }
 
+#chatNameModal .modal-content {
+    border-radius: 8px;
+    border: 1px solid #e1e8ed;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#chatNameModal .modal-header {
+    border-bottom: none;
+    padding: 15px 20px;
+}
+
+#chatNameModal .modal-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #14171a;
+}
+
+#chatNameModal .modal-body {
+    padding: 15px 20px;
+    color: #333;
+    font-size: 15px;
+}
+
+#chatNameModal .modal-footer {
+    border-top: none;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#chatNameButton {
+    border: 1px solid black;
+    color: white;
+    background-color: black;
+    font-weight: bold;
+    padding: 5px 15px;
+    border-radius: 60px;
+    display: inline-block;
+    margin-left: var(--spacing);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+#chatNameButton:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+}
+
+#chatNameTextbox {
+    height: 36px;
+    width: 100%;
+    padding: 5px 15px;
+    border-radius: 50px;
+    background-color: var(--lightGrey);
+    border: none;
+    color: var(--greyText);
+}
+
 .searchBarContainer {
     position: relative;
     color: var(--greyText);
@@ -833,6 +909,94 @@ button span {
     display: flex;
     flex-direction: column;
     min-height: 0;
+    flex: 1;
+}
+
+.chatTitleBarContainer {
+    border-bottom: 1px solid var(--lightGrey);
+    display: flex;
+    align-items: center;
+    padding: var(--spacing);
+}
+
+#chatName {
+    width: 100%;
+    border: 1px solid transparent;
+    padding: 0 5px;
+}
+
+#chatName:hover {
+    border: 1px solid var(--lightGrey);
+    cursor: text;
+}
+
+.chatContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden;
+}
+
+.chatContainer .footer {
+    display: flex;
+    padding: var(--spacing);
+    flex-shrink: 0px;
+}
+
+.chatContainer .footer textarea {
+    flex: 1;
+    resize: none;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 18px;
+    border: none;
+    padding: 6px 14px;
+    height: 38px;
+    overflow: hidden;
+}
+
+.chatContainer .footer button {
+    background-color: transparent;
+    color: var(--blue);
+    font-size: 24px;
+}
+
+.chatMessages {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    padding: var(--spacing);
+}
+
+.chatImagesContainer {
+    display: flex;
+    flex-direction: row-reverse;
+    height: 100%;
+    margin-right: 10px;
+}
+
+.chatImagesContainer img {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+}
+
+.chatImagesContainer .userCount {
+    height: 40px;
+    width: 40px;
+    background-color: #f1f1f1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    border: 2px solid #fff;
+}
+
+.chatImagesContainer img:not(:last-child),
+.chatImagesContainer .userCount {
+    margin-left: -10px;
 }
 
 .chatTitleBar {
@@ -943,7 +1107,3 @@ button span {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-
-
-
-
