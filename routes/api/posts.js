@@ -4,6 +4,7 @@ const app = express();
 const router = express.Router();
 const User = require('../../schemas/UserSchema');
 const Post = require('../../schemas/PostSchema');
+const Notification = require('../../schemas/NotificationSchema');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -11,13 +12,13 @@ app.use(bodyParser.json());
 router.get("/", async (req, res, next) => {
     var searchObj = req.query;
 
-    if(searchObj.isReply !== undefined) {
+    if (searchObj.isReply !== undefined) {
         var isReply = searchObj.isReply == "true";
         searchObj.replyTo = { $exists: isReply };
         delete searchObj.isReply;
     }
 
-    if(searchObj.search !== undefined) {
+    if (searchObj.search !== undefined) {
         searchObj.content = { $regex: searchObj.search, $options: "i" };
         delete searchObj.search;
     }
@@ -25,13 +26,13 @@ router.get("/", async (req, res, next) => {
     if (searchObj.followingOnly !== undefined) {
         var followingOnly = searchObj.followingOnly == "true";
 
-        if(followingOnly) {
+        if (followingOnly) {
             var objectIds = [];
 
             if (!req.session.user.following) {
                 req.session.user.following = [];
             }
-            
+
             req.session.user.following.forEach(user => {
                 objectIds.push(user);
             })
@@ -57,7 +58,7 @@ router.get("/:id", async (req, res, next) => {
         postData: postData
     }
 
-    if(postData.replyTo !== undefined) {
+    if (postData.replyTo !== undefined) {
         results.replyTo = postData.replyTo;
     }
 
@@ -84,6 +85,12 @@ router.post("/", async (req, res, next) => {
     Post.create(postData)
         .then(async newPost => {
             newPost = await User.populate(newPost, { path: "postedBy" })
+            newPost = await User.populate(newPost, { path: "replyTo" })
+
+            if (newPost.replyTo !== undefined) {
+                await Notification.insertNotification(newPost.replyTo.postedBy, req.session.user._id, "reply", newPost._id);
+            }
+
             res.status(201).send(newPost);
         })
         .catch(error => {
@@ -111,6 +118,10 @@ router.put("/:id/like", async (req, res, next) => {
             console.log(error);
             res.sendStatus(400);
         })
+
+    if (!isLiked) {
+        await Notification.insertNotification(post.postedBy, userId, "postLike", post._id);
+    }
 
     res.status(200).send(post);
 })
@@ -149,6 +160,10 @@ router.post("/:id/retweet", async (req, res, next) => {
             res.sendStatus(400);
         })
 
+    if (!deletedPost) {
+        await Notification.insertNotification(post.postedBy, userId, "retweet", post._id);
+    }
+
     res.status(200).send(post);
 })
 
@@ -162,19 +177,19 @@ router.delete("/:id", async (req, res, next) => {
 })
 
 router.put("/:id", async (req, res, next) => {
-    if(req.body.pinned !== undefined) {
+    if (req.body.pinned !== undefined) {
         await Post.updateMany({ postedBy: req.session.user }, { pinned: false })
-        .catch(error => {
-            console.log(error);
-            res.sendStatus(400);
-        })
+            .catch(error => {
+                console.log(error);
+                res.sendStatus(400);
+            })
     }
     Post.findByIdAndUpdate(req.params.id, req.body)
         .then(() => res.sendStatus(204))
         .catch(error => {
             console.log(error);
             res.sendStatus(400);
-    })
+        })
 })
 
 async function getPosts(filter) {
