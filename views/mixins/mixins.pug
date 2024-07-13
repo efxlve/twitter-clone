@@ -13,8 +13,6 @@ mixin createReplyModal(userLoggedIn)
             .modal-content
                 .modal-header
                     h5#replyModalLabel.modal-title Reply
-                    button.close(type='button', data-dismiss='modal', aria-label='Close')
-                    span(aria-hidden='true') &times;
                 .modal-body
                     #originalPostContainer
                     .postFormContainer
@@ -24,6 +22,7 @@ mixin createReplyModal(userLoggedIn)
                             textarea#replyTextarea(placeholder="Tweet your reply")
                 .modal-footer
                     button#submitReplyButton.btn.btn-primary(type='button', disabled="") Reply
+                    button#btn.btn-light(type='button', data-dismiss='modal') Cancel
 
 mixin createDeletePostModal()
     #deletePostModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='deletePostModalLabel', aria-hidden='true')

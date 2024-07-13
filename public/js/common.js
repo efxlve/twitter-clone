@@ -488,8 +488,7 @@ function outputPosts(results, container) {
 
     if (results.length == 0) {
         container.append(`
-            <h1 class='noResultsTitle'>Welcome to Twitter!</h1>
-            <div class='noResults'>Come on, write your first tweet now!</div>
+            <div class='noResults'>No results found.</div>
         `)
     }
 }

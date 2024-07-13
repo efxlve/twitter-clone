@@ -880,6 +880,49 @@ button span {
     color: var(--greyText);
 }
 
+#replyModal .modal-content {
+    border-radius: 8px;
+    border: 1px solid #e1e8ed;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#replyModal .modal-header {
+    border-bottom: none;
+    padding: 15px 20px;
+}
+
+#replyModal .modal-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #14171a;
+}
+
+#replyModal .modal-body {
+    padding: 15px 20px;
+    color: #333;
+    font-size: 15px;
+}
+
+#replyModal .modal-footer {
+    border-top: none;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#submitReplyButton {
+    background-color: #1DA1F2;
+    border: 1px solid #1DA1F2;
+    color: white; 
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+#submitReplyButton:hover {
+    background-color: #1482C6;
+    border-color: #1482C6;
+}
+
 .searchBarContainer {
     position: relative;
     color: var(--greyText);
