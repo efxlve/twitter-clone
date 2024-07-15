@@ -9,9 +9,13 @@ This is a Twitter clone built using modern web development technologies. It allo
 ## Features
 
 - User Authentication (Sign Up, Log In, Log Out)
-- Post Tweets
-- View Tweets from all users
-- Responsive Design
+- Users can add tweets, like, retweet, and reply
+- Users can delete tweets and pin their tweet
+- Users can follow and unfollow other users
+- Users can see their and other followers and the following list
+- Realtime update likes, retweets, reply, notifications, chat and user profile
+- User can edit their profile
+- Responsive design for mobile, tablet, and desktop
 
 ## Technologies Used
 
