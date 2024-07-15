@@ -4,6 +4,8 @@ $(document).ready(() => {
     })
 });
 
+$("#markNotificationsAsRead").click(() => markNotificationsAsOpened());
+
 function outputNotificationList(notifications, container) {
     notifications.forEach(notification => {
         var html = createNotificationHtml(notification);
@@ -18,8 +20,10 @@ function outputNotificationList(notifications, container) {
 function createNotificationHtml(notification) {
     var userFrom = notification.userFrom;
     var text = getNotificationText(notification);
+    var href = getNotificationUrl(notification);
+    var className = notification.opened ? "" : "active";
 
-    return `<a href='#' class='resultListItem'=>
+    return `<a href='${href}' class='resultListItem notification ${className}' data-id='${notification._id}'>
                 <div class='resultsImageContainer'>
                     <img src='${userFrom.profilePicture}'>
                 </div>
@@ -32,20 +36,20 @@ function createNotificationHtml(notification) {
 function getNotificationText(notification) {
     var userFrom = notification.userFrom;
 
-    if(!userFrom) {
+    if (!userFrom) {
         return alert("User from data not populated.")
     };
 
     var userFromName = `${userFrom.firstName} ${userFrom.lastName}`;
     var text;
 
-    if(notification.notificationType == "retweet") {
+    if (notification.notificationType == "retweet") {
         text = `${userFromName} retweeted one of your tweets`;
     }
-    else if(notification.notificationType == "postLike") {
+    else if (notification.notificationType == "postLike") {
         text = `${userFromName} liked one of your tweets`;
     }
-    else if(notification.notificationType == "reply") {
+    else if (notification.notificationType == "reply") {
         text = `${userFromName} replied to one of your tweets`;
     }
     else if (notification.notificationType == "follow") {
@@ -53,4 +57,17 @@ function getNotificationText(notification) {
     }
 
     return `<span class='ellipsis'>${text}</span>`;
+};
+
+function getNotificationUrl(notification) {
+    var url = "#";
+
+    if (notification.notificationType == "retweet" || notification.notificationType == "postLike" || notification.notificationType == "reply") {
+        url = `/posts/${notification.entityId}`;
+    }
+    else if (notification.notificationType == "follow") {
+        url = `/profile/${notification.entityId}`;
+    }
+
+    return url;
 };
