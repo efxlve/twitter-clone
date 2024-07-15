@@ -63,6 +63,31 @@ This is a Twitter clone built using modern web development technologies. It allo
   <img src="https://github.com/user-attachments/assets/57fe4377-a1b9-4214-9a91-fc18e3d356fa" alt="Sign Up Page">
 </details>
 
+<details>
+  <summary>Sign Up Page</summary>
+  <img src="https://github.com/user-attachments/assets/57fe4377-a1b9-4214-9a91-fc18e3d356fa" alt="Sign Up Page">
+</details>
+
+<details>
+  <summary>Home Page</summary>
+  <img src="https://github.com/user-attachments/assets/48d1beca-883a-40a3-b90a-9835402a923d" alt="Home Page">
+</details>
+
+<details>
+  <summary>Profile Page</summary>
+  <img src="https://github.com/user-attachments/assets/ec3af813-6ef3-4944-8d88-151d25a437dd" alt="Profile Page">
+</details>
+
+<details>
+  <summary>Profile Page 2</summary>
+  <img src="https://github.com/user-attachments/assets/71bc10a2-270b-4adf-87d4-798c5051f6bc" alt="Profile Page 2">
+</details>
+
+<details>
+  <summary>Profile Page 3</summary>
+  <img src="(https://github.com/user-attachments/assets/be14e28b-821a-4ed8-87f6-c185b93bd4e9" alt="Profile Page 3">
+</details>
+
 ## Contributing
 
 Contributions are welcome! Please open an issue or submit a pull request if you have any suggestions or improvements.
