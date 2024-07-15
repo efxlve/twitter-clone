@@ -1,7 +1,8 @@
 <div align="center">
   <img src="https://github.com/user-attachments/assets/3deb95d1-ab39-4da0-a518-a6a2e2319121" alt="Twitter Logo" width="100">
   <h1 style="font-family: 'Arial', sans-serif;">Twitter Clone</h1>
-  <p style="font-family: 'Arial', sans-serif;">Clone by Muharrem Efe Çayırbahçe</p>
+  <p style="font-family: 'Arial', sans-serif; font-weight: bold; letter-spacing: 2px;">Clone by Muharrem Efe Çayırbahçe</p>
+
 </div>
 
 This is a Twitter clone built using modern web development technologies. It allows users to create an account, log in, post tweets, and view tweets from other users.
