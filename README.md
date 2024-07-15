@@ -69,6 +69,11 @@ This is a Twitter clone built using modern web development technologies. It allo
 </details>
 
 <details>
+  <summary>Tweet Page</summary>
+  <img src="https://github.com/user-attachments/assets/5aa99444-0f83-4b05-b7dd-873a075cc87a" alt="Tweet Page">
+</details>
+
+<details>
   <summary>Profile Page</summary>
   <img src="https://github.com/user-attachments/assets/ec3af813-6ef3-4944-8d88-151d25a437dd" alt="Profile Page">
 </details>
