@@ -85,7 +85,7 @@ This is a Twitter clone built using modern web development technologies. It allo
 
 <details>
   <summary>Profile Page 3</summary>
-  <img src="(https://github.com/user-attachments/assets/be14e28b-821a-4ed8-87f6-c185b93bd4e9" alt="Profile Page 3">
+  <img src="https://github.com/user-attachments/assets/be14e28b-821a-4ed8-87f6-c185b93bd4e9" alt="Profile Page 3">
 </details>
 
 ## Contributing
