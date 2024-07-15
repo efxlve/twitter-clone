@@ -25,7 +25,7 @@ This is a Twitter clone built using modern web development technologies. It allo
 - Node.js
 - Express.js
 - MongoDB
-- Socket.io
+- Socket.IO
 
 ## Installation
 
