@@ -61,6 +61,7 @@ nav a {
     align-items: center;
     justify-content: center;
     color: #212519;
+    position: relative;
 }
 
 nav a.blue {
@@ -1278,4 +1279,34 @@ button span {
 
 .resultListItem.notification * {
     pointer-events: none;
+}
+
+#markNotificationsAsRead {
+    transition: color 0.3s ease;
+}
+
+#markNotificationsAsRead:hover {
+    color: var(--blue);
+}
+
+#notificationBadge,
+#messagesBadge {
+    background-color: var(--red);
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: white;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+}
+
+#notificationBadge.active,
+#messagesBadge.active {
+    visibility: visible;
 }
