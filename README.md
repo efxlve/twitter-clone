@@ -20,13 +20,13 @@ This is a Twitter clone built using modern web development technologies. It allo
 
 ## Technologies Used
 
-- HTML
+- Pug
 - CSS
 - JavaScript
 - Node.js
 - Express.js
 - MongoDB
-- Socket.IO
+- Socket.io
 
 ## Installation
 
