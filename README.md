@@ -2,7 +2,6 @@
   <img src="https://github.com/user-attachments/assets/3deb95d1-ab39-4da0-a518-a6a2e2319121" alt="Twitter Logo" width="100">
   <h1 style="font-family: 'Arial', sans-serif;">Twitter Clone</h1>
   <p style="font-family: Arial, sans-serif;"><strong><span style="letter-spacing: 0.1em;">Clone by Muharrem Efe Çayırbahçe</span></strong></p>
-
 </div>
 
 This is a Twitter clone built using modern web development technologies. It allows users to create an account, log in, post tweets, and view tweets from other users.
@@ -59,13 +58,13 @@ This is a Twitter clone built using modern web development technologies. It allo
 ## Screenshots
 
 <details>
-  <summary>Sign In Page</summary>
-  <img src="https://github.com/user-attachments/assets/109eb776-e53f-488b-b5cf-9dcf8a858076" alt="Sign In Page">
+  <summary>Sign in Page</summary>
+  <img src="https://github.com/user-attachments/assets/109eb776-e53f-488b-b5cf-9dcf8a858076" alt="Sign in Page">
 </details>
 
 <details>
-  <summary>Sign Up Page</summary>
-  <img src="https://github.com/user-attachments/assets/57fe4377-a1b9-4214-9a91-fc18e3d356fa" alt="Sign Up Page">
+  <summary>Sign up Page</summary>
+  <img src="https://github.com/user-attachments/assets/57fe4377-a1b9-4214-9a91-fc18e3d356fa" alt="Sign up Page">
 </details>
 
 <details>
